@@ -11,7 +11,7 @@ ldos_path = os.path.join(
     os.path.join(data_repo_path, "Be2"), "Be_snapshot1.out.npy"
 )
 """
-Shows how MALA can be used to visualize observables of interest. 
+Shows how MALA can be used to visualize observables of interest.
 """
 
 ####################
@@ -45,6 +45,7 @@ energy_grid = ldos_calculator.energy_grid
 # electronic structure visualization software.
 density_calculator = mala.Density.from_ldos_calculator(ldos_calculator)
 density_calculator.write_to_cube("Be_density.cube")
+density_calculator.write_to_openpmd_file("density_*.bp")
 
 # The radial distribution function can be visualized on discretized radii.
 rdf, radii = ldos_calculator.radial_distribution_function_from_atoms(

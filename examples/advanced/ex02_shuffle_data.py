@@ -8,8 +8,8 @@ data_path = os.path.join(data_repo_path, "Be2")
 
 """
 Shows how data can be shuffled amongst multiple
-snapshots, which is very useful in the lazy loading case, where this cannot be 
-easily done in memory. 
+snapshots, which is very useful in the lazy loading case, where this cannot be
+easily done in memory.
 """
 
 
@@ -20,11 +20,11 @@ parameters.data.shuffling_seed = 1234
 
 data_shuffler = mala.DataShuffler(parameters)
 data_shuffler.add_snapshot(
-    "Be_snapshot0.in.npy", data_path, "Be_snapshot0.out.npy", data_path
+    "Be_snapshot0.in.h5", data_path, "Be_snapshot1.out.h5", data_path, snapshot_type='openpmd'
 )
 data_shuffler.add_snapshot(
-    "Be_snapshot1.in.npy", data_path, "Be_snapshot1.out.npy", data_path
+    "Be_snapshot1.in.h5", data_path, "Be_snapshot1.out.h5", data_path, snapshot_type='openpmd'
 )
 data_shuffler.shuffle_snapshots(
-    complete_save_path=".", save_name="Be_shuffled*"
+    complete_save_path=".", save_name="Be_shuffled*.bp4"
 )
